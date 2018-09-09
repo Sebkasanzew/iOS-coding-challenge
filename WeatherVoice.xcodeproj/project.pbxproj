@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9E832C3221459F2800B93C58 /* google-cloud-speech-api.key.json in Resources */ = {isa = PBXBuildFile; fileRef = 9E832C3121459F2800B93C58 /* google-cloud-speech-api.key.json */; };
 		9E83547C214584F600047F7F /* VoiceListenerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E83547B214584F600047F7F /* VoiceListenerModel.swift */; };
 		9E83547E2145853E00047F7F /* WeatherViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E83547D2145853E00047F7F /* WeatherViewViewController.swift */; };
 		9E8354802145857200047F7F /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E83547F2145857100047F7F /* WeatherViewModel.swift */; };
@@ -59,6 +60,8 @@
 
 /* Begin PBXFileReference section */
 		9E0501C821458C5400A02EB2 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		9E832C2F21459E7500B93C58 /* .gitattributes */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitattributes; sourceTree = "<group>"; };
+		9E832C3121459F2800B93C58 /* google-cloud-speech-api.key.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = "google-cloud-speech-api.key.json"; sourceTree = "<group>"; };
 		9E83547B214584F600047F7F /* VoiceListenerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceListenerModel.swift; sourceTree = "<group>"; };
 		9E83547D2145853E00047F7F /* WeatherViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewViewController.swift; sourceTree = "<group>"; };
 		9E83547F2145857100047F7F /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
@@ -113,6 +116,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9E832C3021459EFD00B93C58 /* API-Keys */ = {
+			isa = PBXGroup;
+			children = (
+				9E832C3121459F2800B93C58 /* google-cloud-speech-api.key.json */,
+			);
+			path = "API-Keys";
+			sourceTree = "<group>";
+		};
 		9EDD606421457F0F00A2F761 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -167,6 +178,7 @@
 		9EE59DAA21457164008C3D4C /* WeatherVoice */ = {
 			isa = PBXGroup;
 			children = (
+				9E832C3021459EFD00B93C58 /* API-Keys */,
 				9EE59DD921457BC3008C3D4C /* Supporting Files */,
 				9EE59DE021457D75008C3D4C /* Assets */,
 				9EE59DE121457D88008C3D4C /* Storyboards */,
@@ -207,6 +219,7 @@
 			isa = PBXGroup;
 			children = (
 				9E0501C821458C5400A02EB2 /* .gitignore */,
+				9E832C2F21459E7500B93C58 /* .gitattributes */,
 				9EE59DDA21457C09008C3D4C /* Cartfile */,
 				9EE59DDD21457D20008C3D4C /* Cartfile.resolved */,
 				9EDD606221457EAD00A2F761 /* Cartfile.private */,
@@ -340,6 +353,7 @@
 				9EE59DB62145716A008C3D4C /* LaunchScreen.storyboard in Resources */,
 				9EE59DB32145716A008C3D4C /* Assets.xcassets in Resources */,
 				9EE59DB121457164008C3D4C /* Main.storyboard in Resources */,
+				9E832C3221459F2800B93C58 /* google-cloud-speech-api.key.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
