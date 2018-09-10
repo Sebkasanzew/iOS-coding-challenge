@@ -14,6 +14,8 @@ class VoiceListenerViewController: UIViewController {
 
     @IBOutlet weak var voiceButton: UIButton!
     
+    private let model = VoiceListenerModel()
+    
     private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {

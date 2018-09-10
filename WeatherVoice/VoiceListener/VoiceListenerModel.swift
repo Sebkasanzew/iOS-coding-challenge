@@ -7,3 +7,10 @@
 //
 
 import Foundation
+
+class VoiceListenerModel {
+    
+    init() {
+        dump(GoogleSpeech.shared)
+    }
+}

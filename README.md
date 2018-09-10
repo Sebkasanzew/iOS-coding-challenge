@@ -1,5 +1,5 @@
 # Setup instructions
-This project was developed with MacOS High Sierra and Xcode 9.4. UI is optimized only for iPhone 8.
+This project was developed with MacOS High Sierra and Xcode 9.4. UI is optimized only for iPhone 8 Plus.
 
 The following tools are needed in order to build and run the project: 'Carthage', 'git-crypt'
 All these tools are installable via Homebrew.
