@@ -16,6 +16,7 @@
 		9E835484214585EC00047F7F /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E835483214585EC00047F7F /* Nimble.framework */; };
 		9E835485214585FC00047F7F /* Nimble.framework in Copy Test Frameworks */ = {isa = PBXBuildFile; fileRef = 9E835483214585EC00047F7F /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9E835486214585FC00047F7F /* Quick.framework in Copy Test Frameworks */ = {isa = PBXBuildFile; fileRef = 9E835481214585DB00047F7F /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9ED372562146C692002A4C79 /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9ED372552146C692002A4C79 /* PromiseKit.framework */; };
 		9EDD606621457F1000A2F761 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EDD606521457F1000A2F761 /* RxSwift.framework */; };
 		9EDD606821457F2B00A2F761 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EDD606721457F2B00A2F761 /* RxCocoa.framework */; };
 		9EE59DAC21457164008C3D4C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE59DAB21457164008C3D4C /* AppDelegate.swift */; };
@@ -70,6 +71,7 @@
 		9E83547F2145857100047F7F /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
 		9E835481214585DB00047F7F /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
 		9E835483214585EC00047F7F /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
+		9ED372552146C692002A4C79 /* PromiseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PromiseKit.framework; path = Carthage/Build/iOS/PromiseKit.framework; sourceTree = "<group>"; };
 		9EDD606221457EAD00A2F761 /* Cartfile.private */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cartfile.private; sourceTree = "<group>"; };
 		9EDD606521457F1000A2F761 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		9EDD606721457F2B00A2F761 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9ED372562146C692002A4C79 /* PromiseKit.framework in Frameworks */,
 				9EDD606821457F2B00A2F761 /* RxCocoa.framework in Frameworks */,
 				9EDD606621457F1000A2F761 /* RxSwift.framework in Frameworks */,
 			);
@@ -130,6 +133,7 @@
 		9EDD606421457F0F00A2F761 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9ED372552146C692002A4C79 /* PromiseKit.framework */,
 				9E835483214585EC00047F7F /* Nimble.framework */,
 				9E835481214585DB00047F7F /* Quick.framework */,
 				9EDD606721457F2B00A2F761 /* RxCocoa.framework */,
@@ -387,11 +391,13 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/PromiseKit.framework",
 			);
 			name = "Carthage copy";
 			outputPaths = (
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxSwift.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxCocoa.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/PromiseKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

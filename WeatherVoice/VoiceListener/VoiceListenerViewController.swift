@@ -22,16 +22,19 @@ class VoiceListenerViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        self.voiceButton.rx.tap.subscribe( onNext: { event in
-            print("button tap test")
-        }).disposed(by: self.disposeBag)
+        self.registerVoiceButtonListener()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    private func registerVoiceButtonListener() {
+        self.voiceButton.rx.tap.subscribe( onNext: { event in
+            self.model.recordAudio()
+            // TODO Add feedback for audio processing
+        }).disposed(by: self.disposeBag)
+    }
 
 }
-
