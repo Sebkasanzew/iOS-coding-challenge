@@ -9,6 +9,7 @@
 import Foundation
 import PromiseKit
 import AVFoundation
+import SpeechToTextV1
 
 class VoiceListenerModel {
     
