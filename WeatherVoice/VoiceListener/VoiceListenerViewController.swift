@@ -14,10 +14,7 @@ import SpeechToTextV1
 class VoiceListenerViewController: UIViewController {
 
     @IBOutlet weak var voiceButton: UIButton!
-    
-    var speechToText: SpeechToText!
-    var isStreaming = false
-    var accumulator = SpeechRecognitionResultsAccumulator()
+    @IBOutlet weak var speechOutputLabel: UILabel!
     
     private let model = VoiceListenerModel()
     
@@ -25,47 +22,38 @@ class VoiceListenerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
-        self.speechToText = SpeechToText(
-            username: WatsonSpeech.shared.username,
-            password: WatsonSpeech.shared.password
-        )
         
         self.registerVoiceButtonListener()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        self.registerStreamingStateListener()
+        self.registerSpeechOutputListener()
     }
     
     private func registerVoiceButtonListener() {
         self.voiceButton.rx.tap.subscribe( onNext: { event in
-            self.buttonAction()
+            if !self.model.isStreaming.value {
+                self.speechOutputLabel.text = ""
+            }
             
-            // self.model.recordAudio()
-            // TODO Add feedback for audio processing
+            self.model.toggleStreaming()
+            // TODO Add visual feedback for audio processing
         }).disposed(by: self.disposeBag)
     }
     
-    func buttonAction() {
-        if !isStreaming {
-            isStreaming = true
-            self.voiceButton.setTitle("Stop", for: .normal)
-            let failure = { (error: Error) in print(error) }
-            var settings = RecognitionSettings(contentType: "audio/ogg;codecs=opus")
-            settings.interimResults = true
-            
-            speechToText.recognizeMicrophone(settings: settings, failure: failure) { results in
-                self.accumulator.add(results: results)
-                print(self.accumulator.bestTranscript)
+    private func registerStreamingStateListener() {
+        self.model.isStreaming.asObservable().subscribe(onNext: { isStreaming in
+            switch isStreaming {
+            case true: // TODO implement L10n as soon as possible in a real project
+                self.voiceButton.setTitle("Stop", for: .normal)
+            default:
+                self.voiceButton.setTitle("Start", for: .normal)
             }
-        } else {
-            isStreaming = false
-            self.voiceButton.setTitle("Start", for: .normal)
-            speechToText.stopRecognizeMicrophone()
-        }
+        }).disposed(by: self.disposeBag)
+    }
+    
+    private func registerSpeechOutputListener() {
+        self.model.recognizedSpeech.asObservable().subscribe(onNext: { text in
+            self.speechOutputLabel.text = text
+        }).disposed(by: self.disposeBag)
     }
 
 }

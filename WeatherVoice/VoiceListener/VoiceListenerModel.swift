@@ -8,35 +8,48 @@
 
 import Foundation
 import PromiseKit
-import AVFoundation
+import RxSwift
 import SpeechToTextV1
 
 class VoiceListenerModel {
     
-    var recordingSession: AVAudioSession!
-    var audioRecorder: AVAudioRecorder!
+    var isStreaming: Variable<Bool>
     
-    func recordAudio() {
-        self.recordingSession = AVAudioSession.sharedInstance()
+    var recognizedSpeech: Variable<String>
+    
+    private var speechToText: SpeechToText!
+    
+    private var accumulator = SpeechRecognitionResultsAccumulator()
+    
+    init() {
+        self.isStreaming = Variable(false)
+        self.recognizedSpeech = Variable("")
         
-        do {
-            try self.recordingSession.setCategory(AVAudioSessionCategoryPlayAndRecord)
-            try self.recordingSession.setActive(true)
-            self.recordingSession.requestRecordPermission() { allowed in
-                
-                DispatchQueue.main.async(.promise) {
-                    guard allowed else {
-                        throw NSError(domain: "no permission", code: 1) // TODO define specific error case in separate file
-                    }
-                }.done {
-                    print("audio is allowed")
-                }.catch { error in
-                    // TODO show dialog to user, or change the UI to give the user feedback
-                    print("audio not allowed")
-                }
+        self.speechToText = SpeechToText(
+            username: WatsonSpeech.shared.username,
+            password: WatsonSpeech.shared.password
+        )
+    }
+    
+    func toggleStreaming() {
+        if !self.isStreaming.value {
+            self.isStreaming.value = true
+            let failure = { (error: Error) in
+                // TODO give user feedback
+                print("ERROR: \(error.localizedDescription)")
             }
-        } catch {
-            // TODO show dialog to user, or change the UI to give the user feedback
+            
+            var settings = RecognitionSettings(contentType: "audio/ogg;codecs=opus")
+            settings.interimResults = true
+            
+            self.speechToText.recognizeMicrophone(settings: settings, failure: failure) { results in
+                self.accumulator.add(results: results)
+                self.recognizedSpeech.value = self.accumulator.bestTranscript
+            }
+        } else {
+            self.isStreaming.value = false
+            self.accumulator = SpeechRecognitionResultsAccumulator()
+            self.speechToText.stopRecognizeMicrophone()
         }
     }
 }
