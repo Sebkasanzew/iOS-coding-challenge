@@ -10,20 +10,21 @@ import Foundation
 import PromiseKit
 import RxSwift
 import SpeechToTextV1
+import Alamofire
 
 class VoiceListenerModel {
 
     var isStreaming: Variable<Bool>
-
     var recognizedSpeech: Variable<String>
+    var weatherResult: Variable<WeatherResult?>
 
     private var speechToText: SpeechToText!
-
     private var accumulator = SpeechRecognitionResultsAccumulator()
 
     init( username: String, password: String ) {
         self.isStreaming = Variable(false)
         self.recognizedSpeech = Variable("")
+        self.weatherResult = Variable(nil)
 
         self.speechToText = SpeechToText( username: username, password: password )
     }
@@ -46,6 +47,26 @@ class VoiceListenerModel {
         } else {
             self.isStreaming.value = false
             self.speechToText.stopRecognizeMicrophone()
+        }
+    }
+
+    func getCurrentWeather(lat: Double, lon: Double) {
+        let parameters: Parameters = ["lat": lat, "lon": lon, "APPID": OpenWeatherMap.shared.key]
+
+        Alamofire.request(OpenWeatherMap.currentWeatherURL, parameters: parameters).response { response in
+            let jsonDecoder = JSONDecoder()
+
+            guard let data = response.data else {
+                // TODO user feedback
+                fatalError("no weather data available")
+            }
+
+            do {
+                let weatherData = try jsonDecoder.decode(WeatherResult.self, from: data)
+                self.weatherResult.value = weatherData
+            } catch {
+                fatalError(error.localizedDescription)
+            }
         }
     }
 }

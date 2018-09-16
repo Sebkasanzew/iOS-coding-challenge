@@ -24,7 +24,7 @@ struct WatsonSpeech: Codable {
 
     static private func load(from file: String) -> WatsonSpeech {
         guard let url = Bundle.main.url(forResource: file, withExtension: "json") else {
-            fatalError("Could not find google api key file")
+            fatalError("Could not find watson speech api key file")
         }
 
         do {

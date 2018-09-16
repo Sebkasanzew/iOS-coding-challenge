@@ -6,3 +6,5 @@ analyzer_rules:
   - unused_private_declaration
 line_length:
   ignores_comments: true
+identifier_name:
+  min_length: 2

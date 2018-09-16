@@ -20,10 +20,15 @@ class VoiceListenerModelSpec: QuickSpec {
 
             var voiceModel: VoiceListenerModel!
 
-            beforeEach {
+            beforeSuite {
                 voiceModel = VoiceListenerModel(username: WatsonSpeech.shared.username,
                                                 password: WatsonSpeech.shared.password)
                 expect(voiceModel).notTo(beNil())
+            }
+
+            it("can access current weather data") {
+                voiceModel.getCurrentWeather(lat: 35.0, lon: 78.0)
+                // expect(voiceModel.weatherResult.value).toNotEventually(beNil())
             }
 
             context("while not streaming") {

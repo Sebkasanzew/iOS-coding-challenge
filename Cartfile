@@ -1,5 +1,6 @@
 github "ReactiveX/RxSwift" ~> 4.0
 github "mxcl/PromiseKit" ~> 6.4
+github "Alamofire/Alamofire" ~> 4.7
 
 github "watson-developer-cloud/swift-sdk"
 
