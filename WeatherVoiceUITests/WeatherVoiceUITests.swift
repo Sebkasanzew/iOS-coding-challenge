@@ -28,9 +28,14 @@ class WeatherVoiceUITests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testVoiceButton() {
+        let app = XCUIApplication()
+        
+        app.buttons["Start"].tap()
+        XCTAssert(app.buttons["Stop"].exists, "Title of button does not change to \"Stop\"")
+
+        app.buttons["Stop"].tap()
+        XCTAssert(app.buttons["Start"].exists, "Title of button does not change to \"Start\"")
     }
     
 }

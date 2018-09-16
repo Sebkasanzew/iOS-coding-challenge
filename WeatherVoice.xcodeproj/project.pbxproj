@@ -23,12 +23,15 @@
 		9EE59DB121457164008C3D4C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9EE59DAF21457164008C3D4C /* Main.storyboard */; };
 		9EE59DB32145716A008C3D4C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9EE59DB22145716A008C3D4C /* Assets.xcassets */; };
 		9EE59DB62145716A008C3D4C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9EE59DB42145716A008C3D4C /* LaunchScreen.storyboard */; };
-		9EE59DC12145716A008C3D4C /* VoiceListenerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE59DC02145716A008C3D4C /* VoiceListenerSpec.swift */; };
+		9EE59DC12145716A008C3D4C /* VoiceListenerModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE59DC02145716A008C3D4C /* VoiceListenerModelSpec.swift */; };
 		9EE59DCC2145716B008C3D4C /* WeatherVoiceUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE59DCB2145716B008C3D4C /* WeatherVoiceUITests.swift */; };
 		C75879DD214D5B80008517C5 /* watson-speech-api.key.json in Resources */ = {isa = PBXBuildFile; fileRef = C75879DC214D5B80008517C5 /* watson-speech-api.key.json */; };
 		C75879ED214D83A2008517C5 /* SpeechToTextV1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C75879EC214D83A1008517C5 /* SpeechToTextV1.framework */; };
 		C75879EF214D8401008517C5 /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C75879EE214D8401008517C5 /* Starscream.framework */; };
 		C75879F1214D86BB008517C5 /* RestKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C75879F0214D86BB008517C5 /* RestKit.framework */; };
+		C75879F3214E7D84008517C5 /* WatsonSpeechSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75879F2214E7D84008517C5 /* WatsonSpeechSpec.swift */; };
+		C75879F8214E8C8C008517C5 /* RxTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C75879F7214E8C8B008517C5 /* RxTest.framework */; };
+		C75879F9214E8C9B008517C5 /* RxTest.framework in Copy Test Frameworks */ = {isa = PBXBuildFile; fileRef = C75879F7214E8C8B008517C5 /* RxTest.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +58,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				C75879F9214E8C9B008517C5 /* RxTest.framework in Copy Test Frameworks */,
 				9E835485214585FC00047F7F /* Nimble.framework in Copy Test Frameworks */,
 				9E835486214585FC00047F7F /* Quick.framework in Copy Test Frameworks */,
 			);
@@ -85,7 +89,7 @@
 		9EE59DB52145716A008C3D4C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9EE59DB72145716A008C3D4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9EE59DBC2145716A008C3D4C /* WeatherVoiceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherVoiceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		9EE59DC02145716A008C3D4C /* VoiceListenerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceListenerSpec.swift; sourceTree = "<group>"; };
+		9EE59DC02145716A008C3D4C /* VoiceListenerModelSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceListenerModelSpec.swift; sourceTree = "<group>"; };
 		9EE59DC22145716A008C3D4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9EE59DC72145716A008C3D4C /* WeatherVoiceUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherVoiceUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EE59DCB2145716B008C3D4C /* WeatherVoiceUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherVoiceUITests.swift; sourceTree = "<group>"; };
@@ -96,6 +100,8 @@
 		C75879EC214D83A1008517C5 /* SpeechToTextV1.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpeechToTextV1.framework; path = Carthage/Build/iOS/SpeechToTextV1.framework; sourceTree = "<group>"; };
 		C75879EE214D8401008517C5 /* Starscream.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Starscream.framework; path = Carthage/Build/iOS/Starscream.framework; sourceTree = "<group>"; };
 		C75879F0214D86BB008517C5 /* RestKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RestKit.framework; path = Carthage/Build/iOS/RestKit.framework; sourceTree = "<group>"; };
+		C75879F2214E7D84008517C5 /* WatsonSpeechSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatsonSpeechSpec.swift; sourceTree = "<group>"; };
+		C75879F7214E8C8B008517C5 /* RxTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxTest.framework; path = Carthage/Build/iOS/RxTest.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +122,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C75879F8214E8C8C008517C5 /* RxTest.framework in Frameworks */,
 				9E835484214585EC00047F7F /* Nimble.framework in Frameworks */,
 				9E835482214585DB00047F7F /* Quick.framework in Frameworks */,
 			);
@@ -142,6 +149,7 @@
 		9EDD606421457F0F00A2F761 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C75879F7214E8C8B008517C5 /* RxTest.framework */,
 				C75879F0214D86BB008517C5 /* RestKit.framework */,
 				C75879EE214D8401008517C5 /* Starscream.framework */,
 				C75879EC214D83A1008517C5 /* SpeechToTextV1.framework */,
@@ -212,8 +220,9 @@
 		9EE59DBF2145716A008C3D4C /* WeatherVoiceTests */ = {
 			isa = PBXGroup;
 			children = (
-				9EE59DC02145716A008C3D4C /* VoiceListenerSpec.swift */,
-				9EE59DC22145716A008C3D4C /* Info.plist */,
+				C75879F4214E7D8A008517C5 /* Supporting Files */,
+				9EE59DC02145716A008C3D4C /* VoiceListenerModelSpec.swift */,
+				C75879F2214E7D84008517C5 /* WatsonSpeechSpec.swift */,
 			);
 			path = WeatherVoiceTests;
 			sourceTree = "<group>";
@@ -221,8 +230,8 @@
 		9EE59DCA2145716B008C3D4C /* WeatherVoiceUITests */ = {
 			isa = PBXGroup;
 			children = (
+				C75879F5214E7DA6008517C5 /* Supporting Files */,
 				9EE59DCB2145716B008C3D4C /* WeatherVoiceUITests.swift */,
-				9EE59DCD2145716B008C3D4C /* Info.plist */,
 			);
 			path = WeatherVoiceUITests;
 			sourceTree = "<group>";
@@ -265,6 +274,22 @@
 			name = Storyboards;
 			sourceTree = "<group>";
 		};
+		C75879F4214E7D8A008517C5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9EE59DC22145716A008C3D4C /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C75879F5214E7DA6008517C5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9EE59DCD2145716B008C3D4C /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -272,6 +297,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9EE59DD02145716B008C3D4C /* Build configuration list for PBXNativeTarget "WeatherVoice" */;
 			buildPhases = (
+				C75879F6214E7EC3008517C5 /* Run SwiftLint */,
 				9EE59DA421457164008C3D4C /* Sources */,
 				9EE59DA521457164008C3D4C /* Frameworks */,
 				9EE59DA621457164008C3D4C /* Resources */,
@@ -424,6 +450,20 @@
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks";
 		};
+		C75879F6214E7EC3008517C5 /* Run SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run SwiftLint";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint autocorrect\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -444,7 +484,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9EE59DC12145716A008C3D4C /* VoiceListenerSpec.swift in Sources */,
+				C75879F3214E7D84008517C5 /* WatsonSpeechSpec.swift in Sources */,
+				9EE59DC12145716A008C3D4C /* VoiceListenerModelSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -15,30 +15,31 @@ class VoiceListenerViewController: UIViewController {
 
     @IBOutlet weak var voiceButton: UIButton!
     @IBOutlet weak var speechOutputLabel: UILabel!
-    
-    private let model = VoiceListenerModel()
-    
+
+    private let model = VoiceListenerModel(username: WatsonSpeech.shared.username,
+                                           password: WatsonSpeech.shared.password)
+
     private let disposeBag = DisposeBag()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         self.registerVoiceButtonListener()
         self.registerStreamingStateListener()
         self.registerSpeechOutputListener()
     }
-    
+
     private func registerVoiceButtonListener() {
-        self.voiceButton.rx.tap.subscribe( onNext: { event in
+        self.voiceButton.rx.tap.subscribe( onNext: { _ in
             if !self.model.isStreaming.value {
                 self.speechOutputLabel.text = ""
             }
-            
+
             self.model.toggleStreaming()
             // TODO Add visual feedback for audio processing
         }).disposed(by: self.disposeBag)
     }
-    
+
     private func registerStreamingStateListener() {
         self.model.isStreaming.asObservable().subscribe(onNext: { isStreaming in
             switch isStreaming {
@@ -49,7 +50,7 @@ class VoiceListenerViewController: UIViewController {
             }
         }).disposed(by: self.disposeBag)
     }
-    
+
     private func registerSpeechOutputListener() {
         self.model.recognizedSpeech.asObservable().subscribe(onNext: { text in
             self.speechOutputLabel.text = text
