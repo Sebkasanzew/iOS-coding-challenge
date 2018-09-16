@@ -28,6 +28,7 @@ class VoiceListenerModelSpec: QuickSpec {
 
             it("can access current weather data") {
                 voiceModel.getCurrentWeather(lat: 35.0, lon: 78.0)
+                // TODO somehow there is a linking error, when settings values in the model...  couln't do TDD during development
                 // expect(voiceModel.weatherResult.value).toNotEventually(beNil())
             }
 
