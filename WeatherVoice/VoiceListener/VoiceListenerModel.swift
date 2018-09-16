@@ -22,7 +22,7 @@ class VoiceListenerModel {
     var location: CLLocation!
 
     private var speechToText: SpeechToText!
-    private var accumulator = SpeechRecognitionResultsAccumulator()
+    private var accumulator: SpeechRecognitionResultsAccumulator!
 
     private let disposeBag = DisposeBag()
 
@@ -40,6 +40,8 @@ class VoiceListenerModel {
         if !self.isStreaming.value {
             self.isStreaming.value = true
             self.weatherResultText.value = ""
+            self.recognizedSpeech.value = ""
+            self.accumulator = SpeechRecognitionResultsAccumulator()
 
             let failure = { (error: Error) in
                 self.weatherResultText.value = error.localizedDescription
@@ -51,6 +53,7 @@ class VoiceListenerModel {
             self.speechToText.recognizeMicrophone(settings: settings, failure: failure) { results in
                 self.accumulator.add(results: results)
                 self.recognizedSpeech.value = self.accumulator.bestTranscript
+                // TODO Automatically stop listening, when a complete sentence is recognized
             }
         } else {
             self.isStreaming.value = false

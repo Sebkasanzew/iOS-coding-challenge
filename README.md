@@ -1,5 +1,5 @@
 # Setup instructions
-This project was developed with MacOS High Sierra and Xcode 9.4. UI is optimized only for iPhone 8 Plus.
+This project was developed with MacOS Sierra and Xcode 9.2. UI is optimized only for iPhone 8 Plus.
 
 The following tools are needed in order to build and run the project: 'Carthage', 'git-crypt'
 All these tools are installable via Homebrew.
@@ -19,7 +19,7 @@ Additionaly you need to download and build all carthage dependencies with:
 carthage bootstrap --platform ios
 ```
 
-Now your're ready to build and run the app on a connected iPhone.
+Now you're ready to build and run the app on a connected iPhone.
 
 # iOS Coding Challenge
 We want to know how you write **code** - we don't care about coding challenges where you have to reimplement the HTTP protocol by using the bare basics, we want to know how you can use the existing libraries to solve the problems that we have to solve.
