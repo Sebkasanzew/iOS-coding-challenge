@@ -31,7 +31,13 @@ import Foundation
             "icon":"04n"
         }
     ],
-    "main": {"temp":289.5,"humidity":89,"pressure":1013,"temp_min":287.04,"temp_max":
+    "main": {
+        "temp":289.5,
+        "humidity":89,
+        "pressure":1013,
+        "temp_min":287.04,
+        "temp_max":287.04
+    },
     "wind": {
         "speed":7.31,
         "deg":187.002
@@ -49,17 +55,32 @@ import Foundation
  }
  */
 struct WeatherResult: Codable {
-    let coord: Coordinates
-    let sys: Sys
     let weather: [Weather]
     let main: WeatherMain
+    let name: String
+
+    /*
+    let coord: Coordinates
+    let sys: Sys
     let wind: Wind
     let rain: Rain
     let clouds: Clouds
     let dt: Int
     let id: Int
-    let name: String
     let cod: Int
+    */
+
+    private enum Key: String, CodingKey {
+        case weather, main, name
+    }
+
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: Key.self)
+
+        self.weather = try values.decode([Weather].self, forKey: .weather)
+        self.main = try values.decode(WeatherMain.self, forKey: .main)
+        self.name = try values.decode(String.self, forKey: .name)
+    }
 }
 
 struct Coordinates: Codable {
@@ -74,18 +95,40 @@ struct Sys: Codable {
 }
 
 struct Weather: Codable {
-    let id: Int
-    let main: String
     let description: String
-    let icon: String
+    //let id: Int
+    //let main: String
+    //let icon: String
+
+    private enum Key: String, CodingKey {
+        case description
+    }
+
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: Key.self)
+
+        self.description = try values.decode(String.self, forKey: .description)
+    }
 }
 
 struct WeatherMain: Codable {
     let temp: Measurement<UnitTemperature>
-    let humidity: Double
+    let humidity: Int
     let pressure: Measurement<UnitPressure>
-    let tempMin: Measurement<UnitTemperature>
-    let tempMax: Measurement<UnitTemperature>
+    //let tempMin: Measurement<UnitTemperature>
+    //let tempMax: Measurement<UnitTemperature>
+
+    private enum Key: String, CodingKey {
+        case temp, humidity, pressure
+    }
+
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: Key.self)
+
+        self.temp = try values.decode(Measurement<UnitTemperature>.self, forKey: .temp)
+        self.humidity = try values.decode(Int.self, forKey: .humidity)
+        self.pressure = try values.decode(Measurement<UnitPressure>.self, forKey: .pressure)
+    }
 }
 
 struct Wind: Codable {

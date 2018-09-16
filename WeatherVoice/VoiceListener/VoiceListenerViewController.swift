@@ -15,6 +15,7 @@ class VoiceListenerViewController: UIViewController {
 
     @IBOutlet weak var voiceButton: UIButton!
     @IBOutlet weak var speechOutputLabel: UILabel!
+    @IBOutlet weak var weatherOutput: UILabel!
 
     private let model = VoiceListenerModel(username: WatsonSpeech.shared.username,
                                            password: WatsonSpeech.shared.password)
@@ -27,6 +28,8 @@ class VoiceListenerViewController: UIViewController {
         self.registerVoiceButtonListener()
         self.registerStreamingStateListener()
         self.registerSpeechOutputListener()
+        self.registerWeatherResultListener()
+        self.registerWeatherResultTextListener()
     }
 
     private func registerVoiceButtonListener() {
@@ -57,4 +60,24 @@ class VoiceListenerViewController: UIViewController {
         }).disposed(by: self.disposeBag)
     }
 
+    private func registerWeatherResultListener() {
+        self.model.weatherResult.asObservable().subscribe(onNext: { result in
+            if let result = result {
+                let temperature = result.main.temp.converted(to: UnitTemperature.celsius).description
+                let description = result.weather.first?.description ?? ""
+
+                let weatherResultText = "\(result.name): \(temperature) \(description)"
+
+                print(weatherResultText)
+            } else {
+                print("no weather data")
+            }
+        }).disposed(by: self.disposeBag)
+    }
+
+    private func registerWeatherResultTextListener() {
+        self.model.weatherResultText.asObservable()
+            .bind(to: self.weatherOutput.rx.text)
+            .disposed(by: self.disposeBag)
+    }
 }

@@ -29,20 +29,30 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weather Output" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9oK-m6-sBT">
+                                <rect key="frame" x="10" y="219" width="355" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="ohf-N3-BIL" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="BhZ-l4-qYe"/>
+                            <constraint firstItem="ohf-N3-BIL" firstAttribute="top" secondItem="9oK-m6-sBT" secondAttribute="bottom" constant="30" id="KSR-oC-hyi"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="9oK-m6-sBT" secondAttribute="trailing" constant="10" id="Kzh-Dd-Me1"/>
                             <constraint firstItem="ohf-N3-BIL" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="QH4-gn-viW"/>
                             <constraint firstItem="bQy-qd-G4q" firstAttribute="top" secondItem="ohf-N3-BIL" secondAttribute="bottom" constant="30" id="Rrb-Jc-IIk"/>
                             <constraint firstItem="bQy-qd-G4q" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="Rxb-zi-Z8g"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bQy-qd-G4q" secondAttribute="trailing" constant="10" id="Vz0-oO-iIL"/>
+                            <constraint firstItem="9oK-m6-sBT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="l1i-wl-EIs"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="speechOutputLabel" destination="bQy-qd-G4q" id="kdW-cQ-zei"/>
                         <outlet property="voiceButton" destination="ohf-N3-BIL" id="TDd-9P-thQ"/>
+                        <outlet property="weatherOutput" destination="9oK-m6-sBT" id="nDD-ng-OqA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

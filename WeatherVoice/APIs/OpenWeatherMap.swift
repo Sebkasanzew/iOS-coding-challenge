@@ -12,7 +12,7 @@ struct OpenWeatherMap: Codable {
 
     static let shared = OpenWeatherMap(apiKey: "open-weather-map.key")
 
-    static let currentWeatherURL = "api.openweathermap.org/data/2.5/weather"
+    static let currentWeatherURL = "https://api.openweathermap.org/data/2.5/weather"
 
     let key: String
 

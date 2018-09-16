@@ -17,16 +17,22 @@ class VoiceListenerModel {
     var isStreaming: Variable<Bool>
     var recognizedSpeech: Variable<String>
     var weatherResult: Variable<WeatherResult?>
+    var weatherResultText: Variable<String>
 
     private var speechToText: SpeechToText!
     private var accumulator = SpeechRecognitionResultsAccumulator()
+
+    private let disposeBag = DisposeBag()
 
     init( username: String, password: String ) {
         self.isStreaming = Variable(false)
         self.recognizedSpeech = Variable("")
         self.weatherResult = Variable(nil)
+        self.weatherResultText = Variable("")
 
         self.speechToText = SpeechToText( username: username, password: password )
+
+        self.registerTextToRequestListener()
     }
 
     func toggleStreaming() {
@@ -53,20 +59,37 @@ class VoiceListenerModel {
     func getCurrentWeather(lat: Double, lon: Double) {
         let parameters: Parameters = ["lat": lat, "lon": lon, "APPID": OpenWeatherMap.shared.key]
 
-        Alamofire.request(OpenWeatherMap.currentWeatherURL, parameters: parameters).response { response in
-            let jsonDecoder = JSONDecoder()
+        Alamofire.request( OpenWeatherMap.currentWeatherURL,
+                           parameters: parameters ).responseJSON { response in
+    
+            switch response.result {
+            case .success:
+                if let json = response.result.value as? [String: Any] {
+                    let main = json["main"] as? [String: Any]
+                    let weather = json["weather"] as? [[String: Any]]
 
-            guard let data = response.data else {
-                // TODO user feedback
-                fatalError("no weather data available")
-            }
+                    // TODO improve text parsing
+                    // swiftlint:disable force_cast
+                    let temperature = main!["temp"] as! Double //.converted(to: UnitTemperature.celsius).description
+                    let description = weather![0]["description"] as! String
+                    let cityName = json["name"] as! String
+                    // swiftlint:enable force_cast
 
-            do {
-                let weatherData = try jsonDecoder.decode(WeatherResult.self, from: data)
-                self.weatherResult.value = weatherData
-            } catch {
+                    self.weatherResultText.value = "In \(cityName) it's \(temperature - 273.15)°C and \(description)"
+                }
+            case .failure(let error):
+                // TODO add user feedback
                 fatalError(error.localizedDescription)
             }
         }
+    }
+
+    private func registerTextToRequestListener() {
+        self.recognizedSpeech.asObservable().subscribe(onNext: { text in
+            if text.contains("weather") {
+                // TODO Get current location
+                self.getCurrentWeather(lat: 35, lon: 130)
+            }
+        }).disposed(by: self.disposeBag)
     }
 }
