@@ -31,7 +31,7 @@ Tapping on "Start" starts the voice recognition. While recording audio, the reco
 
 Tapping on "Stop" will stop the voice recognition.
 
-![doc/screenshot.png](doc/screenshot.png)
+<img src="doc/screenshot.png" width=300>
 
 # iOS Coding Challenge
 We want to know how you write **code** - we don't care about coding challenges where you have to reimplement the HTTP protocol by using the bare basics, we want to know how you can use the existing libraries to solve the problems that we have to solve.
