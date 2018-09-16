@@ -17,7 +17,6 @@ class VoiceListenerModel {
 
     var isStreaming: Variable<Bool>
     var recognizedSpeech: Variable<String>
-    var weatherResult: Variable<WeatherResult?>
     var weatherResultText: Variable<String>
 
     var location: CLLocation!
@@ -30,7 +29,6 @@ class VoiceListenerModel {
     init( username: String, password: String ) {
         self.isStreaming = Variable(false)
         self.recognizedSpeech = Variable("")
-        self.weatherResult = Variable(nil)
         self.weatherResultText = Variable("")
 
         self.speechToText = SpeechToText( username: username, password: password )
@@ -41,9 +39,10 @@ class VoiceListenerModel {
     func toggleStreaming() {
         if !self.isStreaming.value {
             self.isStreaming.value = true
+            self.weatherResultText.value = ""
+
             let failure = { (error: Error) in
-                // TODO give user feedback
-                print("ERROR: \(error.localizedDescription)")
+                self.weatherResultText.value = error.localizedDescription
             }
 
             var settings = RecognitionSettings(contentType: "audio/ogg;codecs=opus")
@@ -71,32 +70,33 @@ class VoiceListenerModel {
                     let main = json["main"] as? [String: Any]
                     let weather = json["weather"] as? [[String: Any]]
 
-                    // TODO improve text parsing
+                    // TODO improve text parsing and remove force casts
                     // swiftlint:disable force_cast
                     let temperature = main!["temp"] as! Double //.converted(to: UnitTemperature.celsius).description
                     let description = weather![0]["description"] as! String
                     let cityName = json["name"] as! String
                     // swiftlint:enable force_cast
 
-                    self.weatherResultText.value = "In \(cityName) it's \(temperature - 273.15)°C and \(description)"
+                    // TODO parse data (like temperature) into a Measurement object to remove hardcoded calculation of degrees as Celsius
+                    let celsius = Int((temperature - 273.15).rounded())
+                    self.weatherResultText.value = "In \(cityName) it's \(celsius)°C and \(description)"
                 }
             case .failure(let error):
-                // TODO add user feedback
-                fatalError(error.localizedDescription)
+                self.weatherResultText.value = error.localizedDescription
             }
         }
     }
 
     private func registerTextToRequestListener() {
-        self.recognizedSpeech.asObservable().subscribe(onNext: { text in
-            if text.contains("weather") {
+        self.recognizedSpeech.asObservable()
+            .filter { $0.contains("weather") }
+            .subscribe(onNext: { _ in
                 if self.location != nil {
-                    let (lat, lon) = (self.location.coordinate.latitude, self.location.coordinate.longitude)
-                    self.getCurrentWeather(lat: lat, lon: lon)
+                    self.getCurrentWeather( lat: self.location.coordinate.latitude,
+                                            lon: self.location.coordinate.longitude )
                 } else {
                     self.weatherResultText.value = "Unknown location"
                 }
-            }
-        }).disposed(by: self.disposeBag)
+            }).disposed(by: self.disposeBag)
     }
 }

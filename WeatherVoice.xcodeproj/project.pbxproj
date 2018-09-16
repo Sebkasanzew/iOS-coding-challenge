@@ -9,13 +9,10 @@
 /* Begin PBXBuildFile section */
 		9E832C342145A8F000B93C58 /* WatsonSpeech.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E832C332145A8F000B93C58 /* WatsonSpeech.swift */; };
 		9E83547C214584F600047F7F /* VoiceListenerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E83547B214584F600047F7F /* VoiceListenerModel.swift */; };
-		9E83547E2145853E00047F7F /* WeatherViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E83547D2145853E00047F7F /* WeatherViewViewController.swift */; };
-		9E8354802145857200047F7F /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E83547F2145857100047F7F /* WeatherViewModel.swift */; };
 		9E835482214585DB00047F7F /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E835481214585DB00047F7F /* Quick.framework */; };
 		9E835484214585EC00047F7F /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E835483214585EC00047F7F /* Nimble.framework */; };
 		9E835485214585FC00047F7F /* Nimble.framework in Copy Test Frameworks */ = {isa = PBXBuildFile; fileRef = 9E835483214585EC00047F7F /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9E835486214585FC00047F7F /* Quick.framework in Copy Test Frameworks */ = {isa = PBXBuildFile; fileRef = 9E835481214585DB00047F7F /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		9ED372562146C692002A4C79 /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9ED372552146C692002A4C79 /* PromiseKit.framework */; };
 		9EDD606621457F1000A2F761 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EDD606521457F1000A2F761 /* RxSwift.framework */; };
 		9EDD606821457F2B00A2F761 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EDD606721457F2B00A2F761 /* RxCocoa.framework */; };
 		9EE59DAC21457164008C3D4C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE59DAB21457164008C3D4C /* AppDelegate.swift */; };
@@ -27,7 +24,6 @@
 		C705FFBC214E9A3400386036 /* open-weather-map.key.json in Resources */ = {isa = PBXBuildFile; fileRef = C705FFBB214E9A3400386036 /* open-weather-map.key.json */; };
 		C705FFBE214E9A7900386036 /* OpenWeatherMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = C705FFBD214E9A7900386036 /* OpenWeatherMap.swift */; };
 		C705FFC1214E9E0700386036 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C705FFC0214E9E0700386036 /* Alamofire.framework */; };
-		C705FFC3214EA05100386036 /* WeatherResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = C705FFC2214EA05100386036 /* WeatherResult.swift */; };
 		C705FFC5214EAAA500386036 /* OpenWeatherMapSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = C705FFC4214EAAA500386036 /* OpenWeatherMapSpec.swift */; };
 		C705FFC8214EAF2F00386036 /* VoiceListenerModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = C705FFC7214EAF2F00386036 /* VoiceListenerModelSpec.swift */; };
 		C75879DD214D5B80008517C5 /* watson-speech-api.key.json in Resources */ = {isa = PBXBuildFile; fileRef = C75879DC214D5B80008517C5 /* watson-speech-api.key.json */; };
@@ -78,11 +74,8 @@
 		9E832C332145A8F000B93C58 /* WatsonSpeech.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatsonSpeech.swift; sourceTree = "<group>"; };
 		9E832C352146A55400B93C58 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		9E83547B214584F600047F7F /* VoiceListenerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceListenerModel.swift; sourceTree = "<group>"; };
-		9E83547D2145853E00047F7F /* WeatherViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewViewController.swift; sourceTree = "<group>"; };
-		9E83547F2145857100047F7F /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
 		9E835481214585DB00047F7F /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
 		9E835483214585EC00047F7F /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
-		9ED372552146C692002A4C79 /* PromiseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PromiseKit.framework; path = Carthage/Build/iOS/PromiseKit.framework; sourceTree = "<group>"; };
 		9EDD606221457EAD00A2F761 /* Cartfile.private */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cartfile.private; sourceTree = "<group>"; };
 		9EDD606521457F1000A2F761 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		9EDD606721457F2B00A2F761 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
@@ -103,7 +96,6 @@
 		C705FFBB214E9A3400386036 /* open-weather-map.key.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "open-weather-map.key.json"; sourceTree = "<group>"; };
 		C705FFBD214E9A7900386036 /* OpenWeatherMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenWeatherMap.swift; sourceTree = "<group>"; };
 		C705FFC0214E9E0700386036 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
-		C705FFC2214EA05100386036 /* WeatherResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherResult.swift; sourceTree = "<group>"; };
 		C705FFC4214EAAA500386036 /* OpenWeatherMapSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenWeatherMapSpec.swift; sourceTree = "<group>"; };
 		C705FFC6214EAC5200386036 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
 		C705FFC7214EAF2F00386036 /* VoiceListenerModelSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoiceListenerModelSpec.swift; sourceTree = "<group>"; };
@@ -124,7 +116,6 @@
 				C75879F1214D86BB008517C5 /* RestKit.framework in Frameworks */,
 				C75879EF214D8401008517C5 /* Starscream.framework in Frameworks */,
 				C75879ED214D83A2008517C5 /* SpeechToTextV1.framework in Frameworks */,
-				9ED372562146C692002A4C79 /* PromiseKit.framework in Frameworks */,
 				9EDD606821457F2B00A2F761 /* RxCocoa.framework in Frameworks */,
 				9EDD606621457F1000A2F761 /* RxSwift.framework in Frameworks */,
 			);
@@ -167,7 +158,6 @@
 				C75879F0214D86BB008517C5 /* RestKit.framework */,
 				C75879EE214D8401008517C5 /* Starscream.framework */,
 				C75879EC214D83A1008517C5 /* SpeechToTextV1.framework */,
-				9ED372552146C692002A4C79 /* PromiseKit.framework */,
 				9E835483214585EC00047F7F /* Nimble.framework */,
 				9E835481214585DB00047F7F /* Quick.framework */,
 				9EDD606721457F2B00A2F761 /* RxCocoa.framework */,
@@ -183,15 +173,6 @@
 				9E83547B214584F600047F7F /* VoiceListenerModel.swift */,
 			);
 			path = VoiceListener;
-			sourceTree = "<group>";
-		};
-		9EDD606C2145822C00A2F761 /* WeatherView */ = {
-			isa = PBXGroup;
-			children = (
-				9E83547D2145853E00047F7F /* WeatherViewViewController.swift */,
-				9E83547F2145857100047F7F /* WeatherViewModel.swift */,
-			);
-			path = WeatherView;
 			sourceTree = "<group>";
 		};
 		9EE59D9F21457164008C3D4C = {
@@ -225,7 +206,6 @@
 				9E832C3021459EFD00B93C58 /* API-Keys */,
 				C705FFBF214E9B2700386036 /* APIs */,
 				9EDD606B214581AB00A2F761 /* VoiceListener */,
-				9EDD606C2145822C00A2F761 /* WeatherView */,
 				9EE59DAB21457164008C3D4C /* AppDelegate.swift */,
 			);
 			path = WeatherVoice;
@@ -295,7 +275,6 @@
 			children = (
 				9E832C332145A8F000B93C58 /* WatsonSpeech.swift */,
 				C705FFBD214E9A7900386036 /* OpenWeatherMap.swift */,
-				C705FFC2214EA05100386036 /* WeatherResult.swift */,
 			);
 			path = APIs;
 			sourceTree = "<group>";
@@ -459,7 +438,6 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/PromiseKit.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SpeechToTextV1.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Starscream.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RestKit.framework",
@@ -469,7 +447,6 @@
 			outputPaths = (
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxSwift.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxCocoa.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/PromiseKit.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SpeechToTextV1.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Starscream.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RestKit.framework",
@@ -501,11 +478,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				9E832C342145A8F000B93C58 /* WatsonSpeech.swift in Sources */,
-				9E8354802145857200047F7F /* WeatherViewModel.swift in Sources */,
-				9E83547E2145853E00047F7F /* WeatherViewViewController.swift in Sources */,
 				9EE59DAE21457164008C3D4C /* VoiceListenerViewController.swift in Sources */,
 				C705FFBE214E9A7900386036 /* OpenWeatherMap.swift in Sources */,
-				C705FFC3214EA05100386036 /* WeatherResult.swift in Sources */,
 				9E83547C214584F600047F7F /* VoiceListenerModel.swift in Sources */,
 				9EE59DAC21457164008C3D4C /* AppDelegate.swift in Sources */,
 			);
