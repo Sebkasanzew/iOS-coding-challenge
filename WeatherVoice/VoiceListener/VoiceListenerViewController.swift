@@ -10,12 +10,15 @@ import UIKit
 import RxSwift
 import RxCocoa
 import SpeechToTextV1
+import CoreLocation
 
-class VoiceListenerViewController: UIViewController {
+class VoiceListenerViewController: UIViewController, CLLocationManagerDelegate {
 
     @IBOutlet weak var voiceButton: UIButton!
     @IBOutlet weak var speechOutputLabel: UILabel!
     @IBOutlet weak var weatherOutput: UILabel!
+
+    var locationManager: CLLocationManager!
 
     private let model = VoiceListenerModel(username: WatsonSpeech.shared.username,
                                            password: WatsonSpeech.shared.password)
@@ -25,6 +28,9 @@ class VoiceListenerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.locationManager = CLLocationManager()
+        self.locationManager.delegate = self
+
         self.registerVoiceButtonListener()
         self.registerStreamingStateListener()
         self.registerSpeechOutputListener()
@@ -32,9 +38,20 @@ class VoiceListenerViewController: UIViewController {
         self.registerWeatherResultTextListener()
     }
 
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.first {
+            self.model.location = location
+        }
+    }
+
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        self.weatherOutput.text = "Failed to find your location: \(error.localizedDescription)"
+    }
+
     private func registerVoiceButtonListener() {
         self.voiceButton.rx.tap.subscribe( onNext: { _ in
             if !self.model.isStreaming.value {
+                self.locationManager.requestLocation()
                 self.speechOutputLabel.text = ""
             }
 

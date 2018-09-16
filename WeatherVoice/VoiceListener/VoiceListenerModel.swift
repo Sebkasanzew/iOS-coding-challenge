@@ -11,6 +11,7 @@ import PromiseKit
 import RxSwift
 import SpeechToTextV1
 import Alamofire
+import CoreLocation
 
 class VoiceListenerModel {
 
@@ -18,6 +19,8 @@ class VoiceListenerModel {
     var recognizedSpeech: Variable<String>
     var weatherResult: Variable<WeatherResult?>
     var weatherResultText: Variable<String>
+
+    var location: CLLocation!
 
     private var speechToText: SpeechToText!
     private var accumulator = SpeechRecognitionResultsAccumulator()
@@ -61,7 +64,7 @@ class VoiceListenerModel {
 
         Alamofire.request( OpenWeatherMap.currentWeatherURL,
                            parameters: parameters ).responseJSON { response in
-    
+
             switch response.result {
             case .success:
                 if let json = response.result.value as? [String: Any] {
@@ -87,8 +90,12 @@ class VoiceListenerModel {
     private func registerTextToRequestListener() {
         self.recognizedSpeech.asObservable().subscribe(onNext: { text in
             if text.contains("weather") {
-                // TODO Get current location
-                self.getCurrentWeather(lat: 35, lon: 130)
+                if self.location != nil {
+                    let (lat, lon) = (self.location.coordinate.latitude, self.location.coordinate.longitude)
+                    self.getCurrentWeather(lat: lat, lon: lon)
+                } else {
+                    self.weatherResultText.value = "Unknown location"
+                }
             }
         }).disposed(by: self.disposeBag)
     }
